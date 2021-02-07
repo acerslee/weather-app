@@ -20,15 +20,16 @@ class App extends React.Component {
       temp_max: undefined
      }
 
-     this.getWeather();
+     window.navigator.geolocation.getCurrentPosition(this.getWeather, err => console.log(err));
 
+  }
+  getWeather = async (position) => {
+    if (position.coords.latitude === undefined || position.coords.latitude === undefined) {
+      position.coords.latitude = 0;
+      position.coords.longitude = 0;
     }
 
-
-
-  getWeather = async () => {
-
-
+    console.log(position.coords.latitude, position.coords.longitude)
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}&units=imperial`)
 
     const response = await api_call.json();
@@ -55,6 +56,8 @@ class App extends React.Component {
           country = {this.state.country}
           description = {this.state.description}
           temp = {this.state.temp}
+          temp_min = {this.state.temp_min}
+          temp_max = {this.state.temp_max}
         />
     </div>
     )
