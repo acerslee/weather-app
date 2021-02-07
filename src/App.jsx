@@ -1,6 +1,6 @@
 import React from 'react';
 import WeatherBanner from './components/banner.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css'
 import Weather from './components/weather.jsx';
 // import WeatherList from './components/weatherList.js';
 
@@ -24,12 +24,12 @@ class App extends React.Component {
 
   }
   getWeather = async (position) => {
+    //set default lat and long to 0 is user did not accept location service
     if (position.coords.latitude === undefined || position.coords.latitude === undefined) {
       position.coords.latitude = 0;
       position.coords.longitude = 0;
     }
 
-    console.log(position.coords.latitude, position.coords.longitude)
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}&units=imperial`)
 
     const response = await api_call.json();
@@ -45,7 +45,6 @@ class App extends React.Component {
       temp_max: response.main.temp_max
     })
   }
-
 
   render() {
     return(
