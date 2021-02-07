@@ -1,15 +1,17 @@
 import React from 'react';
 import {Icon} from 'semantic-ui-react';
 
-
 const Weather = (props) => {
 
   var icon = '';
   //check weather and match with weather icon
   if (props.description === 'Snow') {
     icon = 'snowflake';
+  } else if (props.description === 'Sunny') {
+    icon = 'sun';
+  } else if (props.description === 'Rain') {
+    icon = 'umbrella'
   }
-
 
   return (
     <div className = "container">

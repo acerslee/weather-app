@@ -2,9 +2,7 @@ import React from 'react';
 import WeatherBanner from './components/banner.js';
 import 'semantic-ui-css/semantic.min.css'
 import Weather from './components/weather.jsx';
-// import WeatherList from './components/weatherList.js';
-
-const API_KEY =  '335c1b71b0b4e57a45517a276ffd94e4';
+import WEATHER_API_KEY from './env/weatherkey.js';
 
 class App extends React.Component {
 
@@ -30,7 +28,7 @@ class App extends React.Component {
       position.coords.longitude = 0;
     }
 
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}&units=imperial`)
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${WEATHER_API_KEY}&units=imperial`)
 
     const response = await api_call.json();
 

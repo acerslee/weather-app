@@ -1,0 +1,4 @@
+const WEATHER_API_KEY = '335c1b71b0b4e57a45517a276ffd94e4';
+
+
+export default WEATHER_API_KEY;
